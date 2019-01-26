@@ -11,18 +11,18 @@ import gr.dataverse.demoRegLog.repository.UserRepository;
 
 @Service
 public class RegisterService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
-	
+
+
 	public RegLogResponse handleRegister(User user) {
 
 		User userCheck = new User();
 		userCheck =userRepository.findUserByEmail(user.getEmail());
-		
+
 		if( userCheck == null ){
-			
+
 			userRepository.save(user);
 			RegLogResponse registerResponce= new RegLogResponse("SUCCESS", "User registration complete."
 					,String.valueOf(user.getUserId()));

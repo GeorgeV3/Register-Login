@@ -1,5 +1,7 @@
 package gr.dataverse.demoRegLog.model;
 
+
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -9,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @Table(name="user_tbl")
-public class User {
+public class User  {
 	
 	@Transient
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); 
@@ -18,7 +20,8 @@ public class User {
 	@GeneratedValue(
 		    strategy= GenerationType.AUTO, 
 		    generator="native"
-		)//for dont create the extra hibernate table for auto increments in db
+		)
+	//for dont create the extra hibernate table for auto increments in db
 		@GenericGenerator(
 		    name = "native", 
 		    strategy = "native"
@@ -37,12 +40,7 @@ public class User {
 	private String company;
 	@Column( length=250)
 	private String password;
-	public PasswordEncoder getPasswordEncoder() {
-		return passwordEncoder;
-	}
-	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-		this.passwordEncoder = passwordEncoder;
-	}
+
 	public Long getUserId() {
 		return userId;
 	}
@@ -88,7 +86,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [passwordEncoder=" + passwordEncoder + ", userId=" + userId + ", firstName=" + firstName
+		return "User [userId=" + userId + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", email=" + email + ", telephone=" + telephone + ", company=" + company
 				+ ", password=" + password + "]";
 	}
