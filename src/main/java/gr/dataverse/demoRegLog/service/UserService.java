@@ -26,8 +26,8 @@ public class UserService {
 	}
 
 
-	public void updateUser(User user) {
-		User updateUser = userRepository.findUserByUserId(user.getUserId());
+	public void updateUser(Long id , User user) {	
+		User updateUser = userRepository.findUserByUserId(id);
 		String firstName =user.getFirstName();
 		String lastName =user.getLastName();
 		String telephone =user.getTelephone();
@@ -55,11 +55,10 @@ public class UserService {
 			userRepository.save(updateUser);
 		}
 	}
-
+	
+	
 	public RegLogResponse changePassword(Long id , String oldPassword , String newPassword){
 		User checkUser = userRepository.findUserByUserId(id);
-		
-
 		if( passwordEncoder.matches(oldPassword, checkUser.getPassword())) {
 			if(newPassword != null && newPassword.trim().length()!=0 ) {
 			checkUser.setPassword(newPassword);

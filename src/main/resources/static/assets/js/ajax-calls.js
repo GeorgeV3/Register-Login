@@ -20,7 +20,7 @@ $('#login').submit(function(event) {
 				var id = data.userId;
 				localStorage.setItem("userId", id);
 
-				window.location = '/Home.html';
+				window.location = '/Profile.html';
 			}
 		},
 		error: function( jqXhr, textStatus, errorThrown ){
@@ -35,12 +35,27 @@ $('#login').submit(function(event) {
 $('#register').submit(function(event) {
 
 	event.preventDefault();
-	var formdata = $(register).serialize();
+
+	var $registerForm = $(register);
+
+	var formInputs = {
+		password: $registerForm.find('#password').val(),
+		confPassword: $registerForm.find('#conf_password').val(),
+	};
+	var error = validateRegisterForm(formInputs);
+	if (error.length > 0) {
+		$registrationError = $('#registration_error');
+		$registrationError.addClass('display');
+		$registrationError.find(' > span ').text('Error: ' + error);
+		// $registrationError.show();
+		return;
+	}
+
 	$.ajax({
 
 		type: 'POST',
 		url: '/register',
-		data: formdata,
+		data: $registerForm.serialize(),
 
 		success: function(data){     
 
@@ -66,8 +81,11 @@ $('#register').submit(function(event) {
 
 
 //hide the table for change password
-$("#hide").hide();
 
+$(document).ready(function()
+		{
+$("#hide").hide();
+		});
 
 
 
@@ -87,13 +105,13 @@ $(function() {
 	$.ajax({
 		type: 'GET',
 		url: urls,
-		success: function (humans){
-			$("#gg").append("Welcome   <strong>"+humans.name+"</strong>!");
-			$("#g1").append(humans.firstName);
-			$("#g2").append(humans.lastName);
-			$("#g3").append(humans.email);
-			$("#g4").append(humans.telephone);
-			$("#g5").append(humans.company);
+		success: function (user){
+			$("#gg").append("Welcome   <strong>"+user.name+"</strong>!");
+			$("#g1").append(user.firstName);
+			$("#g2").append(user.lastName);
+			$("#g3").append(user.email);
+			$("#g4").append(user.telephone);
+			$("#g5").append(user.company);
 
 		}
 	});

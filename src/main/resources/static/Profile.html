@@ -84,7 +84,7 @@
 							<button class="edit" id="editProfile"
 								style="background-color: rgb(76, 156, 127);">EDIT</button>
 							<button class="btn float-left form-btn" id="changePassword"
-								style="background-color: rgb(76, 156, 127);">Change
+								style="background-color: rgb(76, 156, 127);" data-toggle="modal" data-target="#changePasswordModal">Change
 								Password</button>
 						</div>
 					</div>
@@ -93,42 +93,50 @@
 		</form>
 	</div>
 
-	<div id="hide">
-		<form name="contactform" method="post" id="changePass">
-			<table style="width: 450px">
+	<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<form name="contactform" method="post" id="changePass">
 
-				<tr>
-					<td valign="top">  <label>Old Password</label>  
-					</td>
-					<td valign="top">  <input type="password" maxlength="20"
-						size="30" name="oldPassword" id="oldPass">  
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">  <label>New Password</label>  
-					</td>
-					<td valign="top">  <input type="password" maxlength="20"
-						size="30" name="newPassword" id="newPass">  
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">  <label for="title">Confirm Password</label>
-						 
-					</td>
-					<td valign="top">  <input type="password" maxlength="20"
-						size="30" name="confPass" id="confPass">  
-					</td>
-				</tr>
-
-
-				<tr>
-					<td colspan="2" style="text-align: center">  <input
-						type="submit" value="Submit">  
-					</td>
-				</tr>
-			</table>
-		</form>
+					<div class="modal-header">
+						<h5 class="modal-title" id="changePasswordModalLabel">Change password</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<table style="width: 450px">
+					
+							<tr>
+								<td valign="top">  <label>Old Password</label>  
+								</td>
+								<td valign="top">  <input type="password" maxlength="20" size="30" name="oldPassword" id="oldPass">  
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">  <label>New Password</label>  
+								</td>
+								<td valign="top">  <input type="password" maxlength="20" size="30" name="newPassword" id="newPass">  
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">  <label for="title">Confirm Password</label>
+									 
+								</td>
+								<td valign="top">  <input type="password" maxlength="20" size="30" name="confPass" id="confPass">  
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Save changes"/>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
+
 
 
 	<script src="assets/js/jquery.min.js"></script>

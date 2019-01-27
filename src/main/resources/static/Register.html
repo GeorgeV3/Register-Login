@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,59 +23,76 @@
 		</header>
 	</div>
 	<div class="register-photo" style="height: 900px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 alert-col relative">
+				<div id="registration_error" class="alert alert-danger alert-danger-info absolue center"
+					role="alert">
+					<button type="button" class="close" aria-label="Close" onclick="$('#registration_error').removeClass('display')">
+						<span aria-hidden="true">×</span>
+					</button>
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
 		<div class="d-flex form-container" style="padding: 100px 50px;">
 			<div class="illustration" style="width: 420px; height: 480px;">
 				<img class="justify-content-center"
-					style="background-image: url(&amp;quot;assets/img/datverse3.png&amp;quot;); height: 480px; width: 420px;">
-			</div>
+					style="background-image: url('assets/img/dataverse3.png'); background-repeat: no-repeat; background-position: center; height: 480px; width: 420px;">
+				</div>
 			<form method="post" name="register" id="register" action="/register"
-				style="width: 450px; padding: 10px 10px;">
+			style="width: 450px; padding: 10px 10px;">
 				<h2 class="text-center">
 					<strong>Create an account.</strong>
 				</h2>
 				<div class="form-group">
 					<input class="form-control d-inline-flex" type="text"
-						name="firstName" required placeholder="First Name">
+					name="firstName" required placeholder="First Name">
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="text" name="lastName" required
-						placeholder="Last Name">
+					placeholder="Last Name">
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="email" name="email" required
-						placeholder="Email">
+					placeholder="Email">
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="password" name="password"
-						placeholder="Password" required>
+					<input id="password" class="form-control" type="password" name="password"
+					placeholder="Password" required>
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="password" name="conf_password"
-						placeholder="Confirm Password" required>
+					<input id="conf_password" class="form-control" type="password" name="conf_password"
+					placeholder="Confirm Password" required>
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="text" name="telephone"
-						placeholder="Telephone">
+					placeholder="Telephone">
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="text" name="company"
-						placeholder="Company">
-				</div>
-				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit"
-						style="background-color: rgb(54, 190, 165);">Sign Up</button>
-				</div>
-				<div class="a">
-					<a
-						class="float-none align-items-center align-content-center already"
-						href=Login.html>You already have an account? Login here.</a>
-				</div>
-			</form>
+					placeholder="Company">
+					</div>
+					<div class="form-group">
+						<button id="sign_up" class="btn btn-primary btn-block" type="submit"
+							style="background-color: rgb(54, 190, 165);">Sign Up</button>
+					</div>
+					<div class="a">
+						<a
+							class="float-none align-items-center align-content-center already"
+							href="Login.html">You already have an account? Login here.</a
+						>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/ajax-calls.js"> </script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/js/ajax-calls.js"></script>
+		<script src="assets/js/validateRegisterForm.js"></script>
+	</body>
+</html>
 
 </body>
 
