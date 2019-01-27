@@ -69,8 +69,8 @@ public class UserController {
 	    
 	    @RequestMapping(value="/changePass/{id}", method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<RegLogResponse> changePassword(@PathVariable("id") Long id,@RequestParam (value="oldPassword")String oldPassword 
-	    		, @RequestParam (value="newPassword")String newPassword){	
-	     return ResponseEntity.status(HttpStatus.OK).body(userService.changePassword(id, oldPassword, newPassword));
+	    		, @RequestParam (value="newPassword")String newPassword, @RequestParam (value="confPass")String confPass){	
+	     return ResponseEntity.status(HttpStatus.OK).body(userService.changePassword(id, oldPassword, newPassword, confPass));
 	     
 	    }
 

@@ -54,18 +54,29 @@ public class UserService {
 	}
 	
 	
-	public RegLogResponse changePassword(Long id , String oldPassword , String newPassword){
+	public RegLogResponse changePassword(Long id , String oldPassword , String newPassword , String confPass){
 		User checkUser = userRepository.findUserByUserId(id);
 		if( passwordEncoder.matches(oldPassword, checkUser.getPassword())) {
 			if(newPassword != null && newPassword.trim().length()!=0 ) {
-			checkUser.setPassword(newPassword);
-			userRepository.save(checkUser);
-			return new RegLogResponse("SUCCESS", "NEW PASSWORD REGISTER");
+				if (validatePassword(newPassword) == true && newPassword.equals(confPass) ) {
+					checkUser.setPassword(newPassword);
+					userRepository.save(checkUser);
+					return new RegLogResponse("SUCCESS", "NEW PASSWORD REGISTER");
+				}else {
+					return new RegLogResponse("FAILED", "NEW PASSWORD MUST CONTAIN 8 "
+							+ "CHAR. ONE NUMBER , ONE LETTER , ONE SPECIAL CHAR @$!%*#?&."
+							+ "AND MATCHES WITH CONFIRM PASSWORD");
+				}
 			}return new RegLogResponse("FAILED", "NEW PASSWORD CANNOT BE NULL");
 			
 		}
-
 		return new RegLogResponse("FAILED", "WRONG OLD PASSWORD");
 	}
+	
+	
+	public boolean validatePassword(String password){
+        return password.matches("(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}");
+    }
+	
 
 }
