@@ -46,6 +46,7 @@ public class UserController {
 	    	return ResponseEntity.status(HttpStatus.OK).body(registerService.handleRegister(user));
 	    }
 	    
+	
 	    
 	    @RequestMapping(value = "/user/{id}" , produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<User> findByUsername(@PathVariable("id")Long id){
@@ -60,11 +61,11 @@ public class UserController {
 	    
 	    
 	    @RequestMapping(value="/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<Void> update(@PathVariable("id")Long id , User user){ 
-	    	userService.updateUser(id, user);
-	     HttpHeaders headers = new HttpHeaders();
-	     return new ResponseEntity<Void>(headers, HttpStatus.OK);
+	    public ResponseEntity<RegLogResponse> update(@PathVariable("id")Long id , User user){ 
+	    	return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(id, user));
+	     
 	    }
+	    
 	    
 	    @RequestMapping(value="/changePass/{id}", method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<RegLogResponse> changePassword(@PathVariable("id") Long id,@RequestParam (value="oldPassword")String oldPassword 

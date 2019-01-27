@@ -5,15 +5,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Front-End</title>
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="assets/css/hmhub-header.css">
-<link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
-<link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
-<link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
-<link rel="stylesheet" href="assets/css/Profile-Edit-Form1.css">
-<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<link rel="stylesheet" href="assets/css/hmhub-header.css">
+	<link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+	<link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+	<link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+	<link rel="stylesheet" href="assets/css/Profile-Edit-Form1.css">
+	<link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+	<link rel="stylesheet" href="assets/css/Responsive-footer.css">
+	<link rel="stylesheet" href="assets/css/Responsive-footer1.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
@@ -82,10 +86,11 @@
 					<div class="row">
 						<div class="col-md-12 content-right">
 							<button class="edit" id="editProfile"
-								style="background-color: rgb(76, 156, 127);">EDIT</button>
+								style="background-color: rgb(76, 156, 127);"data-toggle="modal"
+								data-target="#editModal">EDIT</button>
 							<button class="btn float-left form-btn" id="changePassword"
-								style="background-color: rgb(76, 156, 127);" data-toggle="modal" data-target="#changePasswordModal">Change
-								Password</button>
+								style="background-color: rgb(76, 156, 127);" data-toggle="modal"
+								data-target="#changePasswordModal">Change Password</button>
 						</div>
 					</div>
 				</div>
@@ -93,56 +98,147 @@
 		</form>
 	</div>
 
-	<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+	<div class="modal fade" id="changePasswordModal" tabindex="-1"
+		role="dialog" aria-labelledby="changePasswordModalLabel"
+		aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<form name="contactform" method="post" id="changePass">
 
 					<div class="modal-header">
-						<h5 class="modal-title" id="changePasswordModalLabel">Change password</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<h5 class="modal-title" id="changePasswordModalLabel">Change
+							password</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
 						<table style="width: 450px">
-					
+
 							<tr>
 								<td valign="top">  <label>Old Password</label>  
 								</td>
-								<td valign="top">  <input type="password" maxlength="20" size="30" name="oldPassword" id="oldPass">  
+								<td valign="top">  <input type="password" maxlength="20"
+									size="30" name="oldPassword" id="oldPass">  
 								</td>
 							</tr>
 							<tr>
 								<td valign="top">  <label>New Password</label>  
 								</td>
-								<td valign="top">  <input type="password" maxlength="20" size="30" name="newPassword" id="newPass">  
+								<td valign="top">  <input type="password" maxlength="20"
+									size="30" name="newPassword" id="newPass">  
 								</td>
 							</tr>
 							<tr>
-								<td valign="top">  <label for="title">Confirm Password</label>
-									 
+								<td valign="top">  <label for="title">Confirm
+										Password</label>  
 								</td>
-								<td valign="top">  <input type="password" maxlength="20" size="30" name="confPass" id="confPass">  
+								<td valign="top">  <input type="password" maxlength="20"
+									size="30" name="confPass" id="confPass">  
 								</td>
 							</tr>
 						</table>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<input type="submit" class="btn btn-primary" value="Save changes"/>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Save changes" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="editModal" tabindex="-1"
+		role="dialog" aria-labelledby="editModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<form name="contactform" method="post" id="editInfo">
+
+					<div class="modal-header">
+						<h5 class="modal-title" id="editModalLabel">Edit your
+							profile</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<table style="width: 450px">
+
+							<tr>
+								<td valign="top">  <label>First Name</label>  
+								</td>
+								<td valign="top">  <input type="text" maxlength="20"
+									size="30" name="firstName" id="firstName" >  
+								</td>
+							</tr>
+									<tr>
+								<td valign="top">  <label>Last Name</label>  
+								</td>
+								<td valign="top">  <input type="text" maxlength="20"
+									size="30" name="lastName" id="lastName" >  
+								</td>
+							</tr>
+									<tr>
+								<td valign="top">  <label>Email</label>  
+								</td>
+								<td valign="top">  <input type="email" maxlength="20"
+									size="30" name="email" id="email" >  
+								</td>
+							</tr>
+									<tr>
+								<td valign="top">  <label>Telephone</label>  
+								</td>
+								<td valign="top">  <input type="text" maxlength="20"
+									size="30" name="telephone" id="telephone" >  
+								</td>
+							</tr>
+									<tr>
+								<td valign="top">  <label>Company</label>  
+								</td>
+								<td valign="top">  <input type="text" maxlength="20"
+									size="30" name="company" id="company" >  
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Save changes" />
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 
+		  <div style="background-color:rgba(142,85,85,0);background-image:url(&quot;assets/img/footer.jpg&quot;);background-size:cover;background-repeat:no-repeat;">
+        <div class="container">
+            <hr>
+            <ul class="list-inline" id="text_decoration" style="margin-top:30px;font-family:ABeeZee, sans-serif;">
+                <li class="list-inline-item"><a href="#" class="decoration" style="color:rgb(0,0,0);font-size:20px;margin-right:10px;">Home</a></li>
+                <li class="list-inline-item"><a href="#" style="font-size:20px;color:rgb(0,0,0);margin-right:10px;">About</a></li>
+                <li class="list-inline-item"><a href="#" style="color:rgb(0,0,0);font-size:20px;">Privacy Policy</a></li>
+            </ul>
+            <p class="text-center" style="margin-top:30px;margin-bottom:15px;"><a href="#" style="font-size:35px;margin-right:30px;"><i class="fa fa-facebook-square" style="color:rgb(0,0,0);margin-right:0px;"></i></a><a href="#" style="font-size:35px;margin-right:30px;"><i class="icon ion-social-twitter" style="color:rgb(0,0,0);margin-right:2px;"></i></a>
+                <a
+                    href="#" style="font-size:35px;"><i class="fa fa-google-plus-square" style="color:rgb(0,0,0);"></i></a>
+            </p>
+            <p class="text-center" style="color:rgb(193,184,184); color: black;  font-family:ABeeZee, sans-serif;margin-bottom:23px;">Dataverse @ 2007</p>
+        </div>
+    </div>
+
 
 
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/upload-file.js"></script>
-	<script src="assets/js/ajax-calls.js"> </script>
+	<script src="assets/js/ajax-calls.js">
+		
+	</script>
 
 </body>
 

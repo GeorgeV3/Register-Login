@@ -26,14 +26,13 @@ public class UserService {
 	}
 
 
-	public void updateUser(Long id , User user) {	
+	public RegLogResponse updateUser(Long id , User user) {	
 		User updateUser = userRepository.findUserByUserId(id);
 		String firstName =user.getFirstName();
 		String lastName =user.getLastName();
 		String telephone =user.getTelephone();
 		String company =user.getCompany();
-		String password =null;
-		password =user.getPassword();
+		
 
 		if(updateUser!=null){
 			if(firstName != null && firstName.trim().length()!=0) {
@@ -48,12 +47,10 @@ public class UserService {
 			if(company != null && company.trim().length()!=0) {
 				updateUser.setCompany(company);
 			}
-			if(password != null && password.trim().length()!=0) {
-				updateUser.setPassword(password);
-			}
 
 			userRepository.save(updateUser);
 		}
+		return new RegLogResponse("SUCCESS", "YOUR PROFILE UPDATE");
 	}
 	
 	
