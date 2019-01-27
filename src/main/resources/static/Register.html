@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Front-End</title>
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="assets/css/hmhub-header.css">
+<link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+<link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+<link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+<link rel="stylesheet" href="assets/css/Profile-Edit-Form1.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+	<div id="header" style="background-color: rgb(76, 156, 127);">
+		<header style="color: rgb(255, 255, 255);">
+			<h1 id="headn" style="background-color: rgb(19, 47, 88);">Dataverse</h1>
+			<p id="managed">Information Systems &amp; Applications</p>
+		</header>
+	</div>
+	<div class="register-photo" style="height: 900px;">
+		<div class="d-flex form-container" style="padding: 100px 50px;">
+			<div class="illustration" style="width: 420px; height: 480px;">
+				<img class="justify-content-center"
+					style="background-image: url(&amp;quot;assets/img/datverse3.png&amp;quot;); height: 480px; width: 420px;">
+			</div>
+			<form method="post" name="register" id="register" action="/register"
+				style="width: 450px; padding: 10px 10px;">
+				<h2 class="text-center">
+					<strong>Create an account.</strong>
+				</h2>
+				<div class="form-group">
+					<input class="form-control d-inline-flex" type="text"
+						name="firstName" required placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="lastName" required
+						placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="email" name="email" required
+						placeholder="Email">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="password" name="password"
+						placeholder="Password" required>
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="password" name="conf_password"
+						placeholder="Confirm Password" required>
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="telephone"
+						placeholder="Telephone">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="company"
+						placeholder="Company">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary btn-block" type="submit"
+						style="background-color: rgb(54, 190, 165);">Sign Up</button>
+				</div>
+				<div class="a">
+					<a
+						class="float-none align-items-center align-content-center already"
+						href=Login.html>You already have an account? Login here.</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/ajax-calls.js"> </script>
+
+</body>
+
+</html>

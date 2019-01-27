@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Front-End</title>
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="assets/css/hmhub-header.css">
+<link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+<link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+<link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+<link rel="stylesheet" href="assets/css/Profile-Edit-Form1.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+	<div id="header" style="background-color: rgb(76, 156, 127);">
+		<header>
+			<h1 id="headn" style="background-color: rgb(19, 47, 88);">
+				Dataverse<a class="btn btn-dark btn-sm float-right action-button"
+					id="logout" type="button" href="Login.html">Log out</a>
+			</h1>
+			<p id="managed">
+				<em>Information Systems &amp; Applications</em>
+			</p>
+		</header>
+	</div>
+	<div class="container profile profile-view" id="profile">
+		<div class="row">
+			<div class="col-md-12 alert-col relative">
+				<div class="alert alert-info absolue center" role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<span>Profile save with success</span>
+				</div>
+			</div>
+		</div>
+		<form>
+			<div class="form-row profile-row">
+				<div class="col-md-4 relative">
+					<div class="avatar">
+						<div class="avatar-bg center"></div>
+					</div>
+					<input type="file" class="form-control" name="avatar-file">
+				</div>
+				<div class="col-md-8">
+					<div class="a">
+						<h1 style="background-color: rgb(19, 47, 88);">Profile</h1>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<label style="font-size: 20px;">First Name </label>
+							<p id="g1"></p>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<label style="font-size: 20px;">Last Name </label>
+							<p id="g2"></p>
+						</div>
+					</div>
+					<label style="font-size: 20px;">Email </label>
+					<p id="g3">
+					<p>
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<label style="font-size: 20px;">Telephone</label>
+							<p id="g4">
+							<p>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<label style="font-size: 20px;">Company</label>
+							<p id="g5">
+							<p>
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-md-12 content-right">
+							<button class="edit" id="editProfile"
+								style="background-color: rgb(76, 156, 127);">EDIT</button>
+							<button class="btn float-left form-btn" id="changePassword"
+								style="background-color: rgb(76, 156, 127);">Change
+								Password</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div id="hide">
+		<form name="contactform" method="post" id="changePass">
+			<table style="width: 450px">
+
+				<tr>
+					<td valign="top">  <label>Old Password</label>  
+					</td>
+					<td valign="top">  <input type="password" maxlength="20"
+						size="30" name="oldPassword" id="oldPass">  
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">  <label>New Password</label>  
+					</td>
+					<td valign="top">  <input type="password" maxlength="20"
+						size="30" name="newPassword" id="newPass">  
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">  <label for="title">Confirm Password</label>
+						 
+					</td>
+					<td valign="top">  <input type="password" maxlength="20"
+						size="30" name="confPass" id="confPass">  
+					</td>
+				</tr>
+
+
+				<tr>
+					<td colspan="2" style="text-align: center">  <input
+						type="submit" value="Submit">  
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/upload-file.js"></script>
+	<script src="assets/js/ajax-calls.js"> </script>
+
+</body>
+
+</html>

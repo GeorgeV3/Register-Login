@@ -58,13 +58,14 @@ public class UserService {
 
 	public RegLogResponse changePassword(Long id , String oldPassword , String newPassword){
 		User checkUser = userRepository.findUserByUserId(id);
+		
 
 		if( passwordEncoder.matches(oldPassword, checkUser.getPassword())) {
 			if(newPassword != null && newPassword.trim().length()!=0 ) {
 			checkUser.setPassword(newPassword);
 			userRepository.save(checkUser);
 			return new RegLogResponse("SUCCESS", "NEW PASSWORD REGISTER");
-			}return new RegLogResponse("FAILED", "OLD PASSWORD CANNOT BE NULL");
+			}return new RegLogResponse("FAILED", "NEW PASSWORD CANNOT BE NULL");
 			
 		}
 

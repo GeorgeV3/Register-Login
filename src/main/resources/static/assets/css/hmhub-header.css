@@ -1,0 +1,23 @@
+#header {
+  text-align:center;
+  background:black;
+  color:white;
+  font-family:'Raleway';
+  padding:5px;
+}
+
+#headn {
+  font-family:'Raleway';
+}
+
+#managed {
+  font-family:'Raleway';
+  font-style:italic;
+}
+
+.h1, h1 {
+  font-family:cursive;
+  color:lightgrey;
+  background:black;
+}
+
