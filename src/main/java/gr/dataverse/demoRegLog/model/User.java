@@ -30,13 +30,13 @@ public class User  {
 	private Long userId;
 	@Column( nullable=false , length=25)
 	private String firstName;
-	@Column( nullable=false , length=25)
+	@Column( nullable=false , length=40)
 	private String lastName;
-	@Column( nullable=false , length=25 , unique= true)
+	@Column( nullable=false , length=200 , unique= true)
 	private String email;
 	@Column( nullable=false , length=25)
 	private String telephone;
-	@Column( length=25)
+	@Column( length=40)
 	private String company;
 	@Column( length=250)
 	private String password;

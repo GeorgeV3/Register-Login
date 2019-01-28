@@ -34,7 +34,7 @@ public class UserService {
 		String company =user.getCompany();
 		
 
-		if(updateUser!=null){
+		if(updateUser!= null){
 			if(firstName != null && firstName.trim().length()!=0) {
 				updateUser.setFirstName(firstName);
 			}
