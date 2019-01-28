@@ -53,8 +53,6 @@ $('#login').submit(function(event) {
 }); 
 
 
-
-
 $('#register').submit(function(event) {
 
 	event.preventDefault();
@@ -105,6 +103,7 @@ $('#register').submit(function(event) {
 //load the data from the user
 $(function() {
 	var id = localStorage.getItem("userId");
+	
 	if (id !=null) {
 		
 		var urls = '/user/' + id;
@@ -112,6 +111,7 @@ $(function() {
 			type: 'GET',
 			url: urls,
 			success: function (user){
+				$("#welcome").append("Welcome "+user.firstName+" !");
 				$("#g1").append(user.firstName);
 				$("#g2").append(user.lastName);
 				$("#g3").append(user.email);

@@ -5,3 +5,17 @@ div.a {
 div.logout{
 	font-family: ABeeZee, sans-serif;
 }
+
+#header {
+	    position:relative;
+}
+
+#welcome {
+	
+	background-color: lightblue;
+  	color: rgb 76, 156, 127;
+  	
+  	width: 350px;
+  	margin: auto;
+  	border: 1px solid red
+}
