@@ -1,19 +1,19 @@
 package gr.dataverse.demoRegLog.pojos;
 
-public class RegLogResponse {
+public class MessageResponce {
 	
 	 	private String status;
 	    private String message;
 	    private String userId;
 	    
-	    public RegLogResponse(String status, String message) {
+	    public MessageResponce(String status, String message) {
 			super();
 			this.status = status;
 			this.message = message;
 			
 		}
 		
-	    public RegLogResponse(String status, String message, String userId) {
+	    public MessageResponce(String status, String message, String userId) {
 			super();
 			this.status = status;
 			this.message = message;
@@ -42,7 +42,7 @@ public class RegLogResponse {
 
 		@Override
 		public String toString() {
-			return "RegLogResponse [status=" + status + ", message=" + message + ", userId=" + userId + "]";
+			return "MessageResponce [status=" + status + ", message=" + message + ", userId=" + userId + "]";
 		}
 
 

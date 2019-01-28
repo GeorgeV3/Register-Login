@@ -5,6 +5,7 @@ package gr.dataverse.demoRegLog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
 import gr.dataverse.demoRegLog.model.User;
-import gr.dataverse.demoRegLog.pojos.RegLogResponse;
+import gr.dataverse.demoRegLog.pojos.MessageResponce;
+import gr.dataverse.demoRegLog.pojos.RecaptchaResponce;
 import gr.dataverse.demoRegLog.service.LoginService;
 import gr.dataverse.demoRegLog.service.RegisterService;
 import gr.dataverse.demoRegLog.service.UserService;
@@ -31,10 +35,12 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	RestTemplate restTemplate;
 	
 	
 	 @RequestMapping(value="/login" , method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<RegLogResponse> loginUserSimple(@RequestParam (value ="email") String email,
+	    public ResponseEntity<MessageResponce> loginUserSimple(@RequestParam (value ="email") String email,
 	    		@RequestParam (value="password")String password){
 	        return ResponseEntity.status(HttpStatus.OK).body(loginService.handleLogin(email, password));
 	    }
@@ -42,8 +48,23 @@ public class UserController {
 
 	    
 	    @RequestMapping(value = "/register" , method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<RegLogResponse> registerUser( User user){
+	    public ResponseEntity<MessageResponce> registerUser(@RequestParam(value="g-recaptcha-response")String captchaResponce , User user){
+	
+	    	
+//	    	I have problem with validate token of the captcha from google so i disable it and make it to check the box only....
+	    	
+//	    	String url="https://www.google.com/recaptcha/api/siteverify";
+//	    	String params="?secret=6Lc_Po0UAAAAANIFZroaAmIrWtLALiAcZHInUOFw"+captchaResponce;
+//	    	
+//	    	RecaptchaResponce recaptchaResponce=restTemplate.exchange(url+params,HttpMethod.POST,null, RecaptchaResponce.class).getBody();
+//	    	if(recaptchaResponce.isSuccess())
+	    	if (captchaResponce.equals(null) || captchaResponce.equals("")) {
+	    		return ResponseEntity.status(HttpStatus.OK).body(registerService.handleRecaptcha());
+			}
+	    	
+	    	
 	    	return ResponseEntity.status(HttpStatus.OK).body(registerService.handleRegister(user));
+	    	
 	    }
 	    
 	
@@ -61,14 +82,14 @@ public class UserController {
 	    
 	    
 	    @RequestMapping(value="/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<RegLogResponse> update(@PathVariable("id")Long id , User user){ 
+	    public ResponseEntity<MessageResponce> update(@PathVariable("id")Long id , User user){ 
 	    	return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(id, user));
 	     
 	    }
 	    
 	    
 	    @RequestMapping(value="/changePass/{id}", method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<RegLogResponse> changePassword(@PathVariable("id") Long id,@RequestParam (value="oldPassword")String oldPassword 
+	    public ResponseEntity<MessageResponce> changePassword(@PathVariable("id") Long id,@RequestParam (value="oldPassword")String oldPassword 
 	    		, @RequestParam (value="newPassword")String newPassword, @RequestParam (value="confPass")String confPass){	
 	     return ResponseEntity.status(HttpStatus.OK).body(userService.changePassword(id, oldPassword, newPassword, confPass));
 	     

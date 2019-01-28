@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import gr.dataverse.demoRegLog.model.User;
-import gr.dataverse.demoRegLog.pojos.RegLogResponse;
+import gr.dataverse.demoRegLog.pojos.MessageResponce;
 import gr.dataverse.demoRegLog.repository.UserRepository;
 
 @Service
@@ -26,7 +26,7 @@ public class UserService {
 	}
 
 
-	public RegLogResponse updateUser(Long id , User user) {	
+	public MessageResponce updateUser(Long id , User user) {	
 		User updateUser = userRepository.findUserByUserId(id);
 		String firstName =user.getFirstName();
 		String lastName =user.getLastName();
@@ -50,27 +50,27 @@ public class UserService {
 
 			userRepository.save(updateUser);
 		}
-		return new RegLogResponse("SUCCESS", "YOUR PROFILE UPDATE");
+		return new MessageResponce("SUCCESS", "YOUR PROFILE UPDATE");
 	}
 	
 	
-	public RegLogResponse changePassword(Long id , String oldPassword , String newPassword , String confPass){
+	public MessageResponce changePassword(Long id , String oldPassword , String newPassword , String confPass){
 		User checkUser = userRepository.findUserByUserId(id);
 		if( passwordEncoder.matches(oldPassword, checkUser.getPassword())) {
 			if(newPassword != null && newPassword.trim().length()!=0 ) {
 				if (validatePassword(newPassword) == true && newPassword.equals(confPass) ) {
 					checkUser.setPassword(newPassword);
 					userRepository.save(checkUser);
-					return new RegLogResponse("SUCCESS", "NEW PASSWORD REGISTER");
+					return new MessageResponce("SUCCESS", "NEW PASSWORD REGISTER");
 				}else {
-					return new RegLogResponse("FAILED", "NEW PASSWORD MUST CONTAIN 8 "
+					return new MessageResponce("FAILED", "NEW PASSWORD MUST CONTAIN 8 "
 							+ "CHAR. ONE NUMBER , ONE LETTER , ONE SPECIAL CHAR @$!%*#?&."
 							+ "AND MATCHES WITH CONFIRM PASSWORD");
 				}
-			}return new RegLogResponse("FAILED", "NEW PASSWORD CANNOT BE NULL");
+			}return new MessageResponce("FAILED", "NEW PASSWORD CANNOT BE NULL");
 			
 		}
-		return new RegLogResponse("FAILED", "WRONG OLD PASSWORD");
+		return new MessageResponce("FAILED", "WRONG OLD PASSWORD");
 	}
 	
 	

@@ -65,25 +65,24 @@ $('#register').submit(function(event) {
 	};
 	var error = validateRegisterForm(formInputs);
 	if (error.length > 0) {
-		$registrationError = $('#registration_error');
-		$registrationError.addClass('display');
-		$registrationError.find(' > span ').text('Error: ' + error);
-		
+		displayRegistrationError(error);
 		return;
+		
+		
 	}
-
+	
 	$.ajax({
 
 		type: 'POST',
 		url: '/register',
-		data: $registerForm.serialize(),
-
+		data: $registerForm.serialize() 
+		,
+		
 		success: function(data){     
 
 			if(data.status == "FAILED"){
 
-				window.location = '/Register.html';
-				alert(data.message);
+				displayRegistrationError(data.message);
 			}
 			if(data.status == "SUCCESS") {
 				alert(data.message)
@@ -98,6 +97,11 @@ $('#register').submit(function(event) {
 	});
 });  
 
+function displayRegistrationError(error) {
+	$registrationError = $('#registration_error');
+	$registrationError.addClass('display');
+	$registrationError.find(' > span ').text('Error: ' + error);
+}
 
 
 //load the data from the user
